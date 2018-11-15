@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="Cafemoca.TaskBarAnalogClock.Views.Arrow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converters="clr-namespace:Cafemoca.TaskBarAnalogClock.Models.Converters"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:Cafemoca.TaskBarAnalogClock.ViewModels"
+             d:DataContext="{d:DesignInstance viewModels:ArrowViewModel}"
+             d:DesignHeight="50"
+             d:DesignWidth="50"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <converters:NegateConverter x:Key="NegateConverter" />
+            <converters:HalfValueConverter x:Key="HalfValueConverter" />
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Line HorizontalAlignment="Center"
+          VerticalAlignment="Center"
+          Stroke="{Binding Color}"
+          RenderTransformOrigin="{Binding Thickness, Converter={StaticResource HalfValueConverter}}"
+          StrokeThickness="{Binding Thickness}"
+          X1="0"
+          X2="0"
+          Y1="0"
+          Y2="{Binding Length, Converter={StaticResource NegateConverter}}">
+        <Line.RenderTransform>
+            <TransformGroup>
+                <RotateTransform Angle="{Binding Angle, UpdateSourceTrigger=PropertyChanged}" />
+            </TransformGroup>
+        </Line.RenderTransform>
+    </Line>
+
+</UserControl>

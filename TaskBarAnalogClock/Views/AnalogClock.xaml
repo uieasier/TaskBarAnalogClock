@@ -1,0 +1,78 @@
+﻿<csdb:CSDeskBandWpf x:Class="Cafemoca.TaskBarAnalogClock.Views.AnalogClock"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:csdb="clr-namespace:CSDeskBand.Wpf;assembly=CSDeskBand.Wpf"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:viewModels="clr-namespace:Cafemoca.TaskBarAnalogClock.ViewModels"
+                    xmlns:views="clr-namespace:Cafemoca.TaskBarAnalogClock.Views"
+                    Width="40"
+                    Height="40"
+                    d:DataContext="{d:DesignInstance viewModels:AnalogClockViewModel}"
+                    d:DesignHeight="32"
+                    d:DesignWidth="32"
+                    SnapsToDevicePixels="True"
+                    mc:Ignorable="d">
+
+    <csdb:CSDeskBandWpf.DataContext>
+        <viewModels:AnalogClockViewModel />
+    </csdb:CSDeskBandWpf.DataContext>
+
+    <Grid>
+
+        <Ellipse Width="32"
+                 Height="32"
+                 Fill="White" />
+
+        <Rectangle Width="2"
+                   Height="2"
+                   Margin="33,19,5,19"
+                   Fill="LightGray" />
+
+        <Rectangle Width="2"
+                   Height="2"
+                   Margin="5,19,33,19"
+                   Fill="LightGray" />
+
+        <Rectangle Width="2"
+                   Height="2"
+                   Margin="19,5,19,33"
+                   Fill="LightGray" />
+
+        <Rectangle Width="2"
+                   Height="2"
+                   Margin="19,33,19,5"
+                   Fill="LightGray" />
+
+        <views:Arrow>
+            <views:Arrow.DataContext>
+                <viewModels:ArrowViewModel ArrowType="Hour"
+                                           Length="12"
+                                           Thickness="1.5"
+                                           Color="Gray" />
+            </views:Arrow.DataContext>
+        </views:Arrow>
+        <views:Arrow>
+            <views:Arrow.DataContext>
+                <viewModels:ArrowViewModel ArrowType="Minute"
+                                           Length="15"
+                                           Thickness="1"
+                                           Color="Gray" />
+            </views:Arrow.DataContext>
+        </views:Arrow>
+        <views:Arrow>
+            <views:Arrow.DataContext>
+                <viewModels:ArrowViewModel ArrowType="Second"
+                                           Length="15"
+                                           Thickness="1"
+                                           Color="Orange" />
+            </views:Arrow.DataContext>
+        </views:Arrow>
+
+        <Ellipse Width="2"
+                 Height="2"
+                 Fill="Black" />
+
+    </Grid>
+
+</csdb:CSDeskBandWpf>
