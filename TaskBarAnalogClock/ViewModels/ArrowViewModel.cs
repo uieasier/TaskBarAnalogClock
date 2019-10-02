@@ -77,7 +77,7 @@ namespace Cafemoca.TaskBarAnalogClock.ViewModels
             switch (this._arrowType)
             {
                 case ArrowType.Hour:
-                    this.Angle = time.Hour * (360 / 12);
+                    this.Angle = time.Hour * (360 / 12)+ time.Minute * (360 / 12) / 60;
                     return;
                 case ArrowType.Minute:
                     this.Angle = time.Minute * (360 / 60);
